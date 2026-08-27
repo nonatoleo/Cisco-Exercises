@@ -63,7 +63,7 @@ The router acts as the default gateway for both VLANs and performs the Layer 3 r
 
 When PC1 communicates with PC2:
 
-```text
+```
 PC1
 192.168.10.10
     |
@@ -93,3 +93,72 @@ S2
     v
 PC2
 192.168.20.10
+```
+
+Configuration
+
+Router configuration:
+
+Router0 configuration
+
+Switch 1 configuration:
+
+Switch 1 configuration
+
+Switch 2 configuration:
+
+Switch 2 configuration
+
+Verification
+
+The configuration was verified using the following Cisco IOS commands:
+
+show vlan brief
+show interfaces trunk
+show ip interface brief
+Connectivity Tests
+Test	Result
+PC1 → 192.168.10.1	Successful
+PC2 → 192.168.20.1	Successful
+PC1 → 192.168.20.10	Successful
+PC2 → 192.168.10.10	Successful
+
+Successful communication between PC1 and PC2 confirms that inter-VLAN routing is working correctly.
+
+Troubleshooting
+
+During the implementation, the trunk status of S1 Fa0/1 was investigated after the interface reported an operational state of down.
+
+The following commands were used to identify the issue:
+
+show interfaces fa0/1 switchport
+show cdp neighbors detail
+show ip interface brief
+
+CDP confirmed that S1 Fa0/1 was connected to Router0 Gi0/0/0.
+
+This troubleshooting process demonstrated the importance of validating both the configuration and the operational state of network interfaces.
+
+Key Concepts Demonstrated
+VLAN creation and segmentation
+Access ports
+802.1Q trunking
+Router subinterfaces
+Inter-VLAN routing
+Default gateways
+Cisco IOS verification commands
+Basic network troubleshooting
+Cisco Packet Tracer
+Lab File
+
+The complete Cisco Packet Tracer topology is available here:
+
+Download Packet Tracer Lab
+
+Lessons Learned
+
+This lab helped reinforce the relationship between Layer 2 VLAN segmentation and Layer 3 routing.
+
+A trunk allows multiple VLANs to traverse a single physical link, while router subinterfaces provide separate Layer 3 gateways for each VLAN.
+
+The lab also demonstrated that successful configuration requires both configuration validation and operational troubleshooting.
