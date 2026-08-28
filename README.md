@@ -10,7 +10,7 @@ The lab was built and tested using Cisco Packet Tracer.
 
 ## Network Topology
 
-![Network Topology](topology.png)
+![Network Topology](/topology/topology.png)
 
 ## Network Architecture
 
